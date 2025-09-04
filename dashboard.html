@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dashboard - EduSphere</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #12c2e9, #c471ed, #f64f59); /* New vibrant gradient */
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top right logout and back buttons */
+  .top-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding: 15px 25px 0 0;
+  }
+
+  .top-right button {
+    background-color: rgba(0,0,0,0.4);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .top-right button:hover {
+    background-color: rgba(0,0,0,0.7);
+  }
+
+  /* Center container for features */
+  .features-center {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .features-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 600px;
+  }
+
+  /* Feature buttons */
+  .feature-button {
+    padding: 14px 22px;
+    background-color: rgba(0,0,0,0.4);
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    min-width: 140px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .feature-button:hover {
+    background-color: rgba(0,0,0,0.75);
+  }
+</style>
+</head>
+<body>
+
+  <div class="top-right">
+    <button id="backBtn">Back</button>
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+  <div class="features-center">
+    <div class="features-container">
+      <button class="feature-button" id="emergencyBtn">Emergency</button>
+      <button class="feature-button" id="skillsBtn">Skills</button>
+      <button class="feature-button" id="performanceBtn">Performance</button>
+      <button class="feature-button" id="resourcesBtn">Resources</button>
+      <button class="feature-button" id="aiDoubtBtn">AI Doubt</button>
+    </div>
+  </div>
+
+</body>
+</html>

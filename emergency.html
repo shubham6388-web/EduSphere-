@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emergency - EduSphere</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .sos-button {
+    display: block;
+    width: 160px;
+    margin: 0 auto 40px auto;
+    padding: 20px 0;
+    background-color: red;
+    border: none;
+    border-radius: 12px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+    transition: background-color 0.3s ease;
+    text-align: center;
+  }
+
+  .sos-button:hover {
+    background-color: darkred;
+  }
+
+  .medical-list {
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+  }
+
+  .medical-item {
+    background: rgba(0,0,0,0.4);
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+  }
+
+  .medical-item h3 {
+    margin: 0 0 8px 0;
+  }
+
+  .blood-donors {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .donor {
+    background: rgba(0,0,0,0.4);
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+  }
+
+  .donor-name {
+    flex: 2;
+  }
+
+  .donor-bloodgroup {
+    flex: 1;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Emergency</h1>
+
+  <button class="sos-button" onclick="alert('SOS Alert Triggered! Help is on the way!')">SOS</button>
+
+  <div class="medical-list">
+    <div class="medical-item">
+      <h3>Fracture</h3>
+      <p>Symptoms: Pain, swelling, deformity.<br />
+      Treatment: Immobilize the limb, apply ice, seek immediate medical attention.</p>
+    </div>
+    <div class="medical-item">
+      <h3>Bleeding</h3>
+      <p>Symptoms: Blood flow from wound, shock symptoms.<br />
+      Treatment: Apply pressure to wound, elevate limb if possible, seek emergency help.</p>
+    </div>
+    <div class="medical-item">
+      <h3>Dehydration</h3>
+      <p>Symptoms: Dry mouth, dizziness, decreased urine.<br />
+      Treatment: Oral rehydration solutions, rest, seek medical advice if severe.</p>
+    </div>
+    <div class="medical-item">
+      <h3>Severe Allergic Reaction</h3>
+      <p>Symptoms: Swelling, difficulty breathing, rash.<br />
+      Treatment: Use epinephrine injector if available, call emergency services.</p>
+    </div>
+  </div>
+
+  <h2 style="text-align:center; margin-bottom:20px;">Available Blood Donors</h2>
+  <div class="blood-donors">
+    <div class="donor">
+      <div class="donor-name">Rahul Sharma</div>
+      <div class="donor-bloodgroup">A+</div>
+    </div>
+    <div class="donor">
+      <div class="donor-name">Neha Verma</div>
+      <div class="donor-bloodgroup">O-</div>
+    </div>
+    <div class="donor">
+      <div class="donor-name">Amit Joshi</div>
+      <div class="donor-bloodgroup">B+</div>
+    </div>
+    <div class="donor">
+      <div class="donor-name">Sunita Patel</div>
+      <div class="donor-bloodgroup">AB+</div>
+    </div>
+  </div>
+
+</body>
+</html>

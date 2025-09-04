@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Resources - EduSphere</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0072ff, #00c6ff);
+    color: white;
+    margin: 0;
+    padding: 30px;
+    display: flex;
+    height: 100vh;
+  }
+  .subject-list {
+    width: 25%;
+    background: rgba(0,0,0,0.4);
+    border-radius: 12px;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  .subject-list h2 {
+    margin-top: 0;
+    text-align: center;
+  }
+  .subject-item {
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    background-color: rgba(255,255,255,0.1);
+    transition: background-color 0.3s ease;
+  }
+  .subject-item:hover, .subject-item.active {
+    background-color: #ffd700;
+    color: #000;
+    font-weight: bold;
+  }
+  .resource-details {
+    flex-grow: 1;
+    margin-left: 30px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 12px;
+    padding: 25px;
+    overflow-y: auto;
+  }
+  .resource-details h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  .resource-list {
+    list-style: none;
+    padding: 0;
+  }
+  .resource-list li {
+    margin-bottom: 15px;
+  }
+  a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .notes {
+    font-style: italic;
+    margin-top: 5px;
+    color: #ccc;
+  }
+  @media (max-width: 768px) {
+    body {
+      flex-direction: column;
+      height: auto;
+    }
+    .subject-list, .resource-details {
+      width: 100%;
+      margin-left: 0;
+      margin-bottom: 20px;
+      max-height: 200px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="subject-list" id="subjectList">
+  <h2>Subjects</h2>
+</div>
+
+<div class="resource-details" id="resourceDetails">
+  <h2>Select a subject to view resources</h2>
+</div>
+
+<script>
+  const resourcesData = {
+    Calculus: {
+      resources: [
+        { title: "Paul's Online Math Notes", url: "http://tutorial.math.lamar.edu/", desc: "Comprehensive calculus tutorials and exercises" },
+        { title: "Calculus PDF Notes (MIT OpenCourseWare)", url: "https://ocw.mit.edu/courses/mathematics/18-01sc-single-variable-calculus-fall-2010/lecture-notes/", desc: "Free downloadable notes" }
+      ]
+    },
+    FCP: {
+      resources: [
+        { title: "Circuit Basics", url: "https://www.allaboutcircuits.com/textbook/", desc: "Basic and advanced circuit theory explanations" },
+        { title: "FCP Lecture Notes", url: "#", desc: "Upload your notes here or link to notes" }
+      ]
+    },
+    FEEE: {
+      resources: [
+        { title: "Electrical Engineering Portal", url: "https://eepower.com/", desc: "Reference and tutorials on electrical engineering fundamentals" },
+        { title: "FEEE Notes", url: "#", desc: "Upload your notes here or link to notes" }
+      ]
+    },
+    EPM: {
+      resources: [
+        { title: "Engineering Project Management Guide", url: "https://asq.org/quality-resources/project-management", desc: "Project management principles for engineering" },
+        { title: "EPM Project Management Notes", url: "#", desc: "Upload or link to notes" }
+      ]
+    },
+    ECP: {
+      resources: [
+        { title: "Communication Systems Book", url: "https://www.electronics-tutorials.ws/", desc: "Detailed lessons on electronic communication" },
+        { title: "ECP Notes", url: "#", desc: "Upload or link to notes" }
+      ]
+    }
+  };
+
+  const subjectListDiv = document.getElementById('subjectList');
+  const resourceDetailsDiv = document.getElementById('resourceDetails');
+
+  function clearActive() {
+    const items = document.querySelectorAll('.subject-item');
+    items.forEach(item => item.classList.remove('active'));
+  }
+
+  function showResources(subject) {
+    clearActive();
+
+    const selectedItem = document.querySelector(`.subject-item[data-subject="${subject}"]`);
+    if (selectedItem) selectedItem.classList.add('active');
+
+    const data = resourcesData[subject];
+    if (!data) {
+      resourceDetailsDiv.innerHTML = '<h2>No resources found for this subject.</h2>';
+      return;
+    }
+
+    let html = `<h2>${subject} Resources</h2><ul class="resource-list">`;
+    data.resources.forEach(res => {
+      html += `<li><a href="${res.url}" target="_blank" rel="noopener">${res.title}</a><div class="notes">${res.desc}</div></li>`;
+    });
+    html += '</ul>';
+
+    resourceDetailsDiv.innerHTML = html;
+  }
+
+  // Populate subject list
+  Object.keys(resourcesData).forEach(subject => {
+    const div = document.createElement('div');
+    div.classList.add('subject-item');
+    div.textContent = subject;
+    div.setAttribute('data-subject', subject);
+    div.onclick = () => showResources(subject);
+    subjectListDiv.appendChild(div);
+  });
+</script>
+
+</body>
+</html>

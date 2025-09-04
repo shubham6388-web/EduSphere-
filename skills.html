@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Skills - EduSphere</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 30px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  select {
+    width: 320px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+  }
+  .content {
+    max-width: 700px;
+    margin: 40px auto 0 auto;
+    background: rgba(0,0,0,0.5);
+    padding: 25px;
+    border-radius: 12px;
+  }
+  h2 {
+    margin-bottom: 12px;
+  }
+  ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+  a {
+    color: #77caff;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Skills</h1>
+
+  <select id="skillSelect" onchange="showSkillDetails()">
+    <option value="" disabled selected>Select a skill</option>
+    <option value="coding">Coding</option>
+    <option value="webdev">Web Development</option>
+    <option value="graphics">Graphics Design</option>
+    <option value="dataAnalysis">Data Analysis</option>
+    <option value="mobileApp">Mobile App Development</option>
+    <option value="aiBasics">AI Basics</option>
+  </select>
+
+  <div class="content" id="skillContent" style="display:none;">
+    <h2 id="skillName"></h2>
+    <h3>Projects:</h3>
+    <ul id="projectsList"></ul>
+    <h3>Learning Resources:</h3>
+    <ul id="resourcesList"></ul>
+  </div>
+
+<script>
+  const skillData = {
+    coding: {
+      name: "Coding",
+      projects: [
+        "Build a Calculator App",
+        "Create a Chatbot",
+        "Develop a Simple Game"
+      ],
+      resources: [
+        { title: "Codecademy - Learn to Code", url: "https://www.codecademy.com/learn/learn-how-to-code" },
+        { title: "freeCodeCamp Coding Tutorials", url: "https://www.freecodecamp.org/" }
+      ]
+    },
+    webdev: {
+      name: "Web Development",
+      projects: [
+        "Personal Portfolio Website",
+        "Responsive Blog Layout",
+        "Basic E-commerce Site"
+      ],
+      resources: [
+        { title: "MDN Web Docs - Learn Web Development", url: "https://developer.mozilla.org/en-US/docs/Learn" },
+        { title: "FreeCodeCamp Web Development Course", url: "https://www.freecodecamp.org/learn/" }
+      ]
+    },
+    graphics: {
+      name: "Graphics Design",
+      projects: [
+        "Create Social Media Banners",
+        "Design a Logo",
+        "Make an Infographic"
+      ],
+      resources: [
+        { title: "Canva Design School", url: "https://www.canva.com/learn/design-school/" },
+        { title: "Envato Tuts+ Graphics Tutorials", url: "https://design.tutsplus.com/" }
+      ]
+    },
+    dataAnalysis: {
+      name: "Data Analysis",
+      projects: [
+        "Analyze Sales Data Report",
+        "Create Interactive Dashboards",
+        "Perform Data Cleaning with Python"
+      ],
+      resources: [
+        { title: "Khan Academy Data Analysis", url: "https://www.khanacademy.org/computing/computer-programming/sql" },
+        { title: "DataCamp Introduction to Data Analysis", url: "https://www.datacamp.com/courses/introduction-to-data-analysis" }
+      ]
+    },
+    mobileApp: {
+      name: "Mobile App Development",
+      projects: [
+        "Weather App",
+        "ToDo List App",
+        "Simple Quiz Game"
+      ],
+      resources: [
+        { title: "Google Android Developer Guides", url: "https://developer.android.com/guide" },
+        { title: "Flutter Official Documentation", url: "https://flutter.dev/docs" }
+      ]
+    },
+    aiBasics: {
+      name: "AI Basics",
+      projects: [
+        "Build a Chatbot with Dialogflow",
+        "Image Recognition with TensorFlow",
+        "Sentiment Analysis on Tweets"
+      ],
+      resources: [
+        { title: "Google AI Crash Course", url: "https://developers.google.com/machine-learning/crash-course" },
+        { title: "Coursera AI For Everyone", url: "https://www.coursera.org/learn/ai-for-everyone" }
+      ]
+    }
+  };
+
+  function showSkillDetails() {
+    const select = document.getElementById('skillSelect');
+    const skillContent = document.getElementById('skillContent');
+    const skillName = document.getElementById('skillName');
+    const projectsList = document.getElementById('projectsList');
+    const resourcesList = document.getElementById('resourcesList');
+    const skillKey = select.value;
+
+    if (!skillKey) {
+      skillContent.style.display = 'none';
+      return;
+    }
+
+    const skill = skillData[skillKey];
+    skillName.textContent = skill.name;
+
+    projectsList.innerHTML = "";
+    skill.projects.forEach(project => {
+      const li = document.createElement('li');
+      li.textContent = project;
+      projectsList.appendChild(li);
+    });
+
+    resourcesList.innerHTML = "";
+    skill.resources.forEach(res => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = res.url;
+      a.target = "_blank";
+      a.textContent = res.title;
+      li.appendChild(a);
+      resourcesList.appendChild(li);
+    });
+
+    skillContent.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
